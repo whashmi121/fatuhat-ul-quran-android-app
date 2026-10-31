@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Fatuhat Ul Quran</string>
+    <string name="app_title">Fatuhat Ul Quran</string>
+    <string name="surah_list_title">Surah List</string>
+    <string name="search_hint">Search surah...</string>
+    <string name="loading_surah">Loading Surah...</string>
+    <string name="surah_header">%1$s\n%2$s\n(%3$s)</string>
+</resources>

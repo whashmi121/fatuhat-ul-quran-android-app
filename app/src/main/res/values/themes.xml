@@ -1,0 +1,9 @@
+<resources>
+    <style name="Theme.FatuhatUlQuran" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/primary_blue</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="android:statusBarColor">@color/primary_blue</item>
+        <item name="android:windowBackground">@color/surface_light</item>
+    </style>
+</resources>
