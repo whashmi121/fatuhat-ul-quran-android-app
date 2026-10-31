@@ -1,2 +1,1 @@
-# fatuhat-ul-quran-android-app
-Android app for reading and learning Quran verses with a rich UI and offline surah content.
+# This file is intentionally left blank; Android Studio will generate any required wrapper files if needed.

@@ -11,16 +11,24 @@
         android:padding="20dp">
 
         <TextView
-            android:id="@+id/surahHeaderTitle"
+            android:id="@+id/detailTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="18dp"
-            android:background="#E0F2FE"
+            android:layout_marginBottom="10dp"
+            android:background="#CCFBF1"
             android:padding="18dp"
-            android:text="@string/loading_surah"
+            android:text="Loading..."
             android:textColor="#0F172A"
             android:textSize="22sp"
             android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/detailSubtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:textColor="#475569"
+            android:textSize="14sp" />
 
         <LinearLayout
             android:id="@+id/verseContainer"

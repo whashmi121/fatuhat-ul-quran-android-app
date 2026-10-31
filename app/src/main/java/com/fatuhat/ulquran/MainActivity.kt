@@ -11,28 +11,34 @@ import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var repository: QuranRepository
     private lateinit var adapter: SurahAdapter
-    private val allSurahs = QuranData.getSurahs()
+    private lateinit var prefs: AppPreferences
+    private var allSurahs: List<Surah> = emptyList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        repository = QuranRepository(this)
+        prefs = AppPreferences(this)
+        allSurahs = repository.getSurahs()
+
         val recyclerView = findViewById<RecyclerView>(R.id.surahRecyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        adapter = SurahAdapter(allSurahs) { surah ->
+        adapter = SurahAdapter(allSurahs, prefs) { surah ->
             val intent = Intent(this, SurahDetailActivity::class.java)
-            intent.putExtra("SURAH_NUMBER", surah.number)
+            intent.putExtra("SURAH_ID", surah.id)
             startActivity(intent)
         }
         recyclerView.adapter = adapter
 
-        val searchEditText = findViewById<EditText>(R.id.searchEditText)
-        searchEditText.addTextChangedListener(object : TextWatcher {
+        findViewById<EditText>(R.id.searchEditText).addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                adapter.filter(s.toString())
+                val query = s.toString()
+                adapter.filter(query)
             }
             override fun afterTextChanged(s: Editable?) = Unit
         })

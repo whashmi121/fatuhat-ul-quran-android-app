@@ -11,30 +11,27 @@ class SurahDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_surah_detail)
 
-        val surahNumber = intent.getIntExtra("SURAH_NUMBER", 1)
-        val surah = QuranData.getSurahs().firstOrNull { it.number == surahNumber }
-            ?: QuranData.getSurahs().first()
+        val repository = QuranRepository(this)
+        val surahId = intent.getIntExtra("SURAH_ID", 1)
+        val surah = repository.getById(surahId) ?: repository.getSurahs().first()
 
-        val headerTitle = findViewById<TextView>(R.id.surahHeaderTitle)
+        val titleView = findViewById<TextView>(R.id.detailTitle)
+        val subTitleView = findViewById<TextView>(R.id.detailSubtitle)
         val verseContainer = findViewById<LinearLayout>(R.id.verseContainer)
 
-        headerTitle.text = getString(
-            R.string.surah_header,
-            surah.name,
-            surah.transliteration,
-            surah.englishName
-        )
+        titleView.text = "${surah.nameArabic} • ${surah.nameEnglish}"
+        subTitleView.text = "${surah.transliteration} • ${surah.place}"
 
-        title = surah.name
+        title = surah.nameEnglish
 
-        for (verse in surah.verses) {
-            val verseView = TextView(this).apply {
-                text = "${verse.number}. ${verse.arabic}\n${verse.translation}"
-                setPadding(24, 16, 24, 16)
-                textSize = 18f
-                setLineSpacing(8f, 1.2f)
+        for (ayah in surah.verses) {
+            val textView = TextView(this).apply {
+                text = "${ayah.number}. ${ayah.arabic}\n${ayah.translation}"
+                setPadding(24, 18, 24, 18)
+                textSize = 17f
+                setLineSpacing(10f, 1.2f)
             }
-            verseContainer.addView(verseView)
+            verseContainer.addView(textView)
         }
     }
 }

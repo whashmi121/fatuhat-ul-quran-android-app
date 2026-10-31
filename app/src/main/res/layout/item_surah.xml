@@ -22,4 +22,13 @@
         android:textColor="#475569"
         android:textSize="14sp" />
 
+    <ImageButton
+        android:id="@+id/favoriteButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="end"
+        android:background="@android:color/transparent"
+        android:contentDescription="Add to favorites"
+        android:src="@android:drawable/star_big_off" />
+
 </LinearLayout>
